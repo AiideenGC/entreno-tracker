@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Registro de Entrenamiento</title>
+
+<!-- PWA / "Añadir a pantalla de inicio" en iPhone -->
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#2b3b56" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Entreno" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="icon" href="icons/icon-192.png" />
+
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <h1>Registro de Entrenamiento</h1>
+    <p>Elige semana y sesión. Verás la sugerencia de sobrecarga progresiva basada en tu último registro válido, y todo se guarda solo mientras escribes.</p>
+    <div class="toolbar">
+      <button id="exportBtn" type="button">⬇ Exportar copia de seguridad</button>
+      <label for="importInput">⬆ Importar copia de seguridad</label>
+      <input id="importInput" type="file" accept="application/json" />
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="field">
+      <label>Semana</label>
+      <select id="weekSelect"></select>
+    </div>
+    <div class="field">
+      <label>Fecha de inicio</label>
+      <input id="startDateInput" type="date" />
+    </div>
+  </div>
+  <div class="date-range" id="dateRangeText"></div>
+
+  <div class="newweek-row">
+    <button class="btn-outline" id="refreshWeekBtn" type="button">↻ Actualizar rutina de esta semana</button>
+    <button class="btn-outline" id="newWeekBtn" type="button">+ Nueva semana</button>
+  </div>
+
+  <div id="noPrevWeekWarning" class="notice">
+    No hay ninguna semana anterior registrada todavía, así que no hay datos para sugerir sobrecarga progresiva en esta. En cuanto completes esta semana, la siguiente ya podrá usarla como referencia.
+  </div>
+
+  <div class="sync-panel">
+    <label for="syncCodeInput">Código de sincronización (el mismo en todos tus dispositivos)</label>
+    <div class="sync-row">
+      <input id="syncCodeInput" type="text" placeholder="ej. mipeso-2026-xyz" autocomplete="off" autocapitalize="off" />
+      <button id="syncConnectBtn" class="btn-outline" type="button">Conectar</button>
+      <button id="syncDisconnectBtn" class="btn-outline" type="button" style="display:none;">Desconectar</button>
+    </div>
+    <div id="syncStatusText" class="sync-status"></div>
+  </div>
+
+  <div class="session-row">
+    <div class="field">
+      <label>Sesión</label>
+      <select id="sessionSelect"></select>
+    </div>
+    <button class="complete-btn" id="completeBtn" type="button"></button>
+  </div>
+
+  <div id="exercisesContainer"></div>
+
+  <div class="note">
+    🔥 = ejercicio recomendado para calentamiento previo (solo los compuestos más pesados de cada sesión, para no acumular fatiga innecesaria en el resto). Las series de aproximación se recalculan según el peso objetivo de esa semana.
+  </div>
+
+</div>
+
+<div id="saveStatus" class="status-bar"></div>
+
+<script src="js/routine.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/overload.js"></script>
+<script src="js/app.js"></script>
+<script type="module" src="js/sync-module.js"></script>
+</body>
+</html>
