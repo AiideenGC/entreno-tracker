@@ -17,7 +17,8 @@ const WEIGHT_INCREMENTS = {
 };
 const DEFAULT_INCREMENT = 2.5;
 
-function getIncrement(equipment) {
+function getIncrement(equipment, customIncrement) {
+  if (customIncrement != null && !isNaN(customIncrement)) return customIncrement;
   return WEIGHT_INCREMENTS[equipment] || DEFAULT_INCREMENT;
 }
 
@@ -28,10 +29,11 @@ function roundToIncrement(value, inc) {
 const Overload = {
   // prevSet: {weight, reps} del registro histórico de referencia (o null)
   // range: [min, max] reps objetivo de ESTA serie, esta semana
-  // equipment: "barbell" | "dumbbell" | "pulley" | "machine" (opcional)
-  suggestSet: function (prevSet, range, equipment) {
+  // equipment: "barbell" | "dumbbell" | "pulley" | "doublePulley" | "machine" | "singleAxis" (opcional)
+  // customIncrement: número en kg que anula la tabla de equipment para este ejercicio en concreto (opcional)
+  suggestSet: function (prevSet, range, equipment, customIncrement) {
     const min = range[0], max = range[1];
-    const inc = getIncrement(equipment);
+    const inc = getIncrement(equipment, customIncrement);
     if (!prevSet || prevSet.weight === "" || prevSet.weight == null || isNaN(parseFloat(prevSet.weight))) {
       return { text: "Sin dato previo · objetivo " + min + "-" + max + " reps", mode: "none", weight: null, reps: null };
     }
@@ -49,9 +51,9 @@ const Overload = {
     }
   },
 
-  computeWarmup: function (targetWeight, equipment) {
+  computeWarmup: function (targetWeight, equipment, customIncrement) {
     if (!targetWeight || targetWeight <= 0) return [];
-    const inc = getIncrement(equipment);
+    const inc = getIncrement(equipment, customIncrement);
     let steps;
     if (targetWeight <= 20) steps = [[0.6, 8]];
     else if (targetWeight <= 45) steps = [[0.5, 7], [0.75, 4]];

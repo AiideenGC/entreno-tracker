@@ -148,7 +148,7 @@
   function buildWarmupBox(exercise, targetWeight) {
     const box = document.createElement("div");
     box.className = "warmup-box";
-    const sets = Overload.computeWarmup(targetWeight, exercise.equipment);
+    const sets = Overload.computeWarmup(targetWeight, exercise.equipment, exercise.customIncrement);
     if (sets.length === 0) {
       box.classList.add("warmup-empty");
       box.textContent = "Escribe el peso de la 1ª serie de trabajo (o espera a la sugerencia con datos previos) para calcular aquí las series de aproximación.";
@@ -216,7 +216,7 @@
 
       // sugerencia de la 1ª serie (para calentamiento)
       const firstPrev = prevData ? prevData.sets[0] : null;
-      const firstSuggestion = Overload.suggestSet(firstPrev, ex.sets[0], ex.equipment);
+      const firstSuggestion = Overload.suggestSet(firstPrev, ex.sets[0], ex.equipment, ex.customIncrement);
       card._firstSuggestionWeight = firstSuggestion.weight;
 
       if (ex.warmup) {
@@ -232,7 +232,7 @@
 
       ex.sets.forEach(function (range, i) {
         const prevSet = prevData ? prevData.sets[i] : null;
-        const sug = Overload.suggestSet(prevSet, range, ex.equipment);
+        const sug = Overload.suggestSet(prevSet, range, ex.equipment, ex.customIncrement);
 
         const row = document.createElement("div");
         row.className = "set-row";
