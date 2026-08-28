@@ -225,6 +225,15 @@
         body.appendChild(buildWarmupBox(ex, targetWeight));
       }
 
+      const history = Storage.getExerciseHistory(appState, week.number, currentSession, ex.name, 3);
+      const stagnation = Overload.detectStagnation(history);
+      if (stagnation) {
+        const stagBox = document.createElement("div");
+        stagBox.className = "stagnation-note";
+        stagBox.innerHTML = "<span class=\"stagnation-icon\">⏸</span> " + stagnation.text;
+        body.appendChild(stagBox);
+      }
+
       const header = document.createElement("div");
       header.className = "set-row header";
       header.innerHTML = "<div>Serie</div><div>Sugerencia</div><div>Kg</div><div>Reps</div>";

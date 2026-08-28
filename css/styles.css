@@ -74,12 +74,15 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:'Segoe UI','H
 .suggest{background:#f6f2e4;border-radius:8px;padding:6px 8px;font-size:11.5px;color:var(--navy);text-align:left;font-weight:700;}
 .suggest.up{color:var(--ok);}
 .suggest.hold{color:var(--warn);}
+.suggest.down{color:#b5451f;font-weight:800;}
 
 .warmup-box{background:#fbeedb;border:1px dashed #d9a94a;border-radius:10px;padding:10px 12px;margin-bottom:12px;}
 .warmup-title{font-size:11px;font-weight:800;color:#9a6a1f;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:6px;}
 .warmup-line{display:grid;grid-template-columns:70px 1fr 1fr 40px;gap:6px;font-size:13px;color:var(--navy);padding:2px 0;font-weight:600;}
 .warmup-pct{color:#9a6a1f;text-align:right;font-size:11px;font-weight:700;}
 .warmup-box.warmup-empty{font-size:11.5px;color:#9a6a1f;font-style:italic;font-weight:600;}
+.stagnation-note{background:#eef1f8;border:1px solid #c7d0e8;border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:12.5px;color:var(--navy);font-weight:600;line-height:1.4;}
+.stagnation-icon{margin-right:4px;}
 
 .status-bar{position:fixed;left:0;right:0;bottom:0;background:var(--navy);color:#cfd8ea;font-size:11.5px;padding:9px 16px;text-align:center;opacity:0;transform:translateY(100%);transition:opacity .25s, transform .25s;}
 .status-bar.visible{opacity:1;transform:translateY(0);}

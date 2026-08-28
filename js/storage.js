@@ -146,6 +146,34 @@ const Storage = {
     return null;
   },
 
+  // Historial reciente (peso/reps de la 1ª serie) de un ejercicio, semanas
+  // anteriores a currentWeekNumber, más reciente primero. Se usa solo para
+  // detectar estancamiento -- nunca para calcular la sugerencia de peso,
+  // que siempre se basa en la referencia más reciente (findPreviousExerciseData).
+  getExerciseHistory: function (state, currentWeekNumber, sessionNum, exerciseName, limit) {
+    limit = limit || 4;
+    const candidates = state.weeks
+      .filter(function (w) { return w.number < currentWeekNumber; })
+      .sort(function (a, b) { return b.number - a.number; });
+
+    const history = [];
+    for (let i = 0; i < candidates.length && history.length < limit; i++) {
+      const session = candidates[i].sessions[sessionNum];
+      if (!session) continue;
+      const exData = session.exercises[exerciseName];
+      if (!exData) continue;
+      const firstSet = exData.sets[0];
+      if (firstSet && firstSet.weight !== "" && firstSet.weight != null && firstSet.reps !== "" && firstSet.reps != null) {
+        history.push({
+          weekNumber: candidates[i].number,
+          weight: parseFloat(firstSet.weight),
+          reps: parseInt(firstSet.reps, 10)
+        });
+      }
+    }
+    return history; // más reciente primero
+  },
+
   exportBackup: function (state) {
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);

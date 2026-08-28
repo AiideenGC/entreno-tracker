@@ -42,7 +42,12 @@ const Overload = {
     if (isNaN(r)) {
       return { text: "Sin dato previo · objetivo " + min + "-" + max + " reps", mode: "none", weight: null, reps: null };
     }
-    if (r >= max) {
+    if (r < min) {
+      // No llegaste al mínimo del rango la vez anterior: el peso te vino
+      // grande. Bajamos peso en vez de insistir en subir.
+      const newW = Math.max(0, roundToIncrement(w - inc, inc));
+      return { text: newW + " kg × " + min + " reps (baja peso, -" + inc + " kg · la vez anterior no llegaste al rango)", mode: "down", weight: newW, reps: min };
+    } else if (r >= max) {
       const newW = roundToIncrement(w + inc, inc);
       return { text: newW + " kg × " + min + " reps (sube peso, +" + inc + " kg)", mode: "up", weight: newW, reps: min };
     } else {
@@ -63,5 +68,24 @@ const Overload = {
       const w = roundToIncrement(targetWeight * pct, inc);
       return { weight: w, reps: reps, pct: Math.round(pct * 100) };
     });
+  },
+
+  // history: resultado de Storage.getExerciseHistory (más reciente primero).
+  // Aviso puramente informativo -- nunca cambia la sugerencia de peso, que
+  // siempre se basa solo en la referencia más reciente.
+  detectStagnation: function (history) {
+    const MIN_WEEKS = 3;
+    if (!history || history.length < MIN_WEEKS) return null;
+    const window = history.slice(0, MIN_WEEKS); // más reciente primero
+    const newest = window[0];
+    const oldest = window[window.length - 1];
+    if (isNaN(newest.weight) || isNaN(oldest.weight)) return null;
+    if (newest.weight <= oldest.weight) {
+      return {
+        weeks: MIN_WEEKS,
+        text: "Llevas " + MIN_WEEKS + " semanas (desde la semana " + oldest.weekNumber + ") sin subir peso aquí. Puede ser buen momento para una semana de descarga o revisar la técnica."
+      };
+    }
+    return null;
   }
 };
