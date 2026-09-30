@@ -35,20 +35,20 @@ const ROUTINE = {
   // El orden de las claves define el orden de las sesiones en el selector.
   sessions: {
     "1": [
-      { name: "Press horizontal prono en máquina", sets: [[6,8],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Press inclinado en multipower 30º", sets: [[4,6],[6,8]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Press plano con mancuernas", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "dumbbell" },
+      { name: "Press horizontal prono en máquina", sets: [[6,8],[8,10]], rir: 1, rest: "3'", warmup: true, equipment: "barbell" },
+      { name: "Press inclinado en multipower 30º", sets: [[4,6],[6,8]], rir: 1, rest: "3'", warmup: true, equipment: "barbell" },
+      { name: "Press plano con mancuernas", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "dumbbell" },
       { name: "Aperturas en Peck Deck", sets: [[10,12],[12,14],[12,14]], rir: 0, rest: "2'", equipment: "machine" },
-      { name: "Elevaciones laterales con mancuerna de pie", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "dumbbell" },
-      { name: "Elevaciones laterales en polea unilateral", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" },
-      { name: "Press francés con barra", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "barbell" },
-      { name: "Extensión de tríceps en polea unilateral", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" }
+      { name: "Elevaciones laterales con mancuerna de pie", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "1'45", equipment: "dumbbell" },
+      { name: "Elevaciones laterales en polea unilateral", sets: [[10,12],[12,14]], rir: 0, rest: "1'45", equipment: "pulley" },
+      { name: "Press francés con barra", sets: [[8,10],[10,12]], rir: 1, rest: "2'15", equipment: "barbell" },
+      { name: "Extensión de tríceps en polea unilateral", sets: [[10,12],[12,14]], rir: 0, rest: "2'15", equipment: "pulley" }
     ],
     "2": [
-      { name: "Jalón al pecho neutro medio", sets: [[8,10],[10,12]], rir: 1, rest: "2'", warmup: true, equipment: "pulley" },
-      { name: "Remo alto en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "barbell" },
-      { name: "Remo en T (codos abiertos)", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "singleAxis" },
-      { name: "Remo gironda unilateral", sets: [[10,12],[12,14],[12,14]], rir: 1, rest: "2'", equipment: "pulley" },
+      { name: "Jalón al pecho neutro medio", sets: [[8,10],[10,12]], rir: 1, rest: "3'", warmup: true, equipment: "pulley" },
+      { name: "Remo alto en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "barbell" },
+      { name: "Remo en T (codos abiertos)", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "3'", warmup: true, equipment: "singleAxis" },
+      { name: "Remo gironda unilateral", sets: [[10,12],[12,14],[12,14]], rir: 1, rest: "3'", equipment: "pulley" },
       { name: "Band pull apart en polea", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "doublePulley" },
       { name: "Facepull", sets: [[10,12],[12,14],[12,14]], rir: 0, rest: "2'", equipment: "doublePulley" },
       { name: "Curl martillo de pie", sets: [[8,10],[10,12]], rir: 0, rest: "2'", equipment: "dumbbell" },
@@ -57,28 +57,28 @@ const ROUTINE = {
     "3": [
       { name: "Elevaciones de talón en máquina", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "machine", customIncrement: 10 },
       { name: "Aducciones en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "machine", customIncrement: 5 },
-      { name: "Hack Squat", sets: [[6,8],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Prensa 45º", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "barbell" },
+      { name: "Hack Squat", sets: [[6,8],[8,10]], rir: 1, rest: "4'", warmup: true, equipment: "barbell" },
+      { name: "Prensa 45º", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "barbell" },
       { name: "Extensión de cuádriceps", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "machine" },
       { name: "Curl femoral sentado", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "machine" },
-      { name: "Hip Thrust en máquina", sets: [[6,8],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Crunch abdominal en máquina", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "machine" }
+      { name: "Hip Thrust en máquina", sets: [[6,8],[8,10]], rir: 1, rest: "3'30", warmup: true, equipment: "barbell" },
+      { name: "Crunch abdominal en máquina", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "1'30", equipment: "machine" }
     ],
     "4": [
-      { name: "Press inclinado en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Press banca inclinado con mancuernas 30º", sets: [[6,8],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "dumbbell" },
-      { name: "Fondos de tríceps en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "barbell" },
+      { name: "Press inclinado en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "3'", warmup: true, equipment: "barbell" },
+      { name: "Press banca inclinado con mancuernas 30º", sets: [[6,8],[8,10]], rir: 1, rest: "3'", warmup: true, equipment: "dumbbell" },
+      { name: "Fondos de tríceps en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'45", equipment: "barbell" },
       { name: "Cruce de poleas", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "doublePulley" },
       { name: "Elevaciones laterales sentado con mancuernas", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "dumbbell" },
       { name: "Elevaciones laterales en polea", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" },
-      { name: "Kaz press en multipower", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "barbell" },
+      { name: "Kaz press en multipower", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "barbell" },
       { name: "Extensión de tríceps con cuerda overhead", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" }
     ],
     "5": [
-      { name: "Jalón al pecho unilateral", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "pulley" },
-      { name: "Remo en punta", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "singleAxis" },
-      { name: "Remo en máquina neutro", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Remo gironda agarre neutro medio", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "pulley" },
+      { name: "Jalón al pecho unilateral", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "pulley" },
+      { name: "Remo en punta", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "3'30", warmup: true, equipment: "singleAxis" },
+      { name: "Remo en máquina neutro", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "3'30", warmup: true, equipment: "barbell" },
+      { name: "Remo gironda agarre neutro medio", sets: [[8,10],[10,12]], rir: 1, rest: "3'30", equipment: "pulley" },
       { name: "Band pull apart inclinado en polea", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "doublePulley" },
       { name: "Elevaciones con mancuernas para deltoides posterior", sets: [[10,12],[12,14],[12,14]], rir: 0, rest: "2'", equipment: "dumbbell" },
       { name: "Dead curl con barra recta", sets: [[6,8],[8,10]], rir: 0, rest: "2'", equipment: "barbell" },
@@ -87,11 +87,11 @@ const ROUTINE = {
     "6": [
       { name: "Elevaciones de talón piernas rectas", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "barbell" },
       { name: "Aducciones en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "machine", customIncrement: 5 },
-      { name: "Peso muerto rumano con barra", sets: [[4,6],[6,8]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Hip Thrust con barra", sets: [[6,8],[8,10]], rir: 1, rest: "2'", equipment: "barbell" },
-      { name: "Hack Squat", sets: [[6,8],[8,10]], rir: 1, rest: "2'", warmup: true, equipment: "barbell" },
-      { name: "Prensa 45º", sets: [[8,10],[10,12]], rir: 1, rest: "2'", equipment: "barbell" },
-      { name: "Crunch abdominal en máquina", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "machine" }
+      { name: "Peso muerto rumano con barra", sets: [[4,6],[6,8]], rir: 1, rest: "4'", warmup: true, equipment: "barbell" },
+      { name: "Hip Thrust con barra", sets: [[6,8],[8,10]], rir: 1, rest: "3'30", equipment: "barbell" },
+      { name: "Hack Squat", sets: [[6,8],[8,10]], rir: 1, rest: "4'", warmup: true, equipment: "barbell" },
+      { name: "Prensa 45º", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "barbell" },
+      { name: "Crunch abdominal en máquina", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "1'30", equipment: "machine" }
     ]
   }
 };

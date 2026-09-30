@@ -166,6 +166,17 @@
         "<span>" + s.weight + " kg</span>" +
         "<span>× " + s.reps + " reps</span>" +
         "<span class=\"warmup-pct\">" + s.pct + "%</span>";
+      const warmupTimerBtn = document.createElement("button");
+      warmupTimerBtn.type = "button";
+      warmupTimerBtn.className = "rest-icon-btn";
+      warmupTimerBtn.title = "Iniciar descanso tras esta aproximación (1:00)";
+      warmupTimerBtn.textContent = "⏱";
+      warmupTimerBtn.addEventListener("click", function () {
+        if (window.RestTimer) {
+          window.RestTimer.start(window.RestTimer.WARMUP_REST_SECONDS, exercise.name + " (aprox.)", warmupTimerBtn);
+        }
+      });
+      line.appendChild(warmupTimerBtn);
       box.appendChild(line);
     });
     return box;
@@ -203,11 +214,12 @@
 
       const head = document.createElement("div");
       head.className = "card-head";
+      const restLabel = window.RestTimer ? window.RestTimer.formatLabel(ex.rest) : ex.rest;
       head.innerHTML =
         "<h3>" + ex.name + "</h3>" +
         "<div class=\"head-right\">" +
           (ex.warmup ? "<span class=\"badge\">🔥 Calentar</span>" : "") +
-          "<span class=\"meta\">RIR " + ex.rir + " · " + ex.rest + "</span>" +
+          "<span class=\"meta\">RIR " + ex.rir + " · " + restLabel + "</span>" +
         "</div>";
       card.appendChild(head);
 
@@ -236,7 +248,7 @@
 
       const header = document.createElement("div");
       header.className = "set-row header";
-      header.innerHTML = "<div>Serie</div><div>Sugerencia</div><div>Kg</div><div>Reps</div>";
+      header.innerHTML = "<div>Serie</div><div>Sugerencia</div><div>Kg</div><div>Reps</div><div></div>";
       body.appendChild(header);
 
       ex.sets.forEach(function (range, i) {
@@ -275,10 +287,34 @@
           scheduleSave();
         });
 
+        const setTimerBtn = document.createElement("button");
+        setTimerBtn.type = "button";
+        setTimerBtn.className = "rest-icon-btn";
+        setTimerBtn.title = "Iniciar descanso (" + (window.RestTimer ? window.RestTimer.formatLabel(ex.rest) : ex.rest) + ")";
+        setTimerBtn.textContent = "⏱";
+        setTimerBtn.addEventListener("click", function () {
+          if (window.RestTimer) {
+            window.RestTimer.start(window.RestTimer.parseSeconds(ex.rest), ex.name, setTimerBtn);
+          }
+        });
+
+        // Al terminar de escribir las reps, si la serie ya tiene peso
+        // y reps, arrancamos el descanso automáticamente.
+        repsInput.addEventListener("change", function () {
+          const w = exState.sets[i].weight;
+          const r = exState.sets[i].reps;
+          const hasWeight = w !== "" && w != null;
+          const hasReps = r !== "" && r != null;
+          if (hasWeight && hasReps && window.RestTimer) {
+            window.RestTimer.start(window.RestTimer.parseSeconds(ex.rest), ex.name, setTimerBtn);
+          }
+        });
+
         row.appendChild(label);
         row.appendChild(sugEl);
         row.appendChild(weightInput);
         row.appendChild(repsInput);
+        row.appendChild(setTimerBtn);
         body.appendChild(row);
       });
 
