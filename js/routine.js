@@ -68,8 +68,8 @@ const ROUTINE = {
       { name: "Press inclinado en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "3'", warmup: true, equipment: "barbell" },
       { name: "Press banca inclinado con mancuernas 30º", sets: [[6,8],[8,10]], rir: 1, rest: "3'", warmup: true, equipment: "dumbbell" },
       { name: "Fondos de tríceps en máquina", sets: [[8,10],[10,12]], rir: 1, rest: "2'45", equipment: "barbell" },
-      { name: "Cruce de poleas", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "doublePulley" },
-      { name: "Elevaciones laterales sentado con mancuernas", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "dumbbell" },
+      { name: "Cruce de poleas", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "barbell" },
+      { name: "Elevaciones laterales sentado en máquina", sets: [[8,10],[10,12],[10,12]], rir: 0, rest: "2'", equipment: "barbell" },
       { name: "Elevaciones laterales en polea", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" },
       { name: "Kaz press en multipower", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "barbell" },
       { name: "Extensión de tríceps con cuerda overhead", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" }
