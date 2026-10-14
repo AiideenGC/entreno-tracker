@@ -75,7 +75,7 @@ const ROUTINE = {
       { name: "Extensión de tríceps con cuerda overhead", sets: [[10,12],[12,14]], rir: 0, rest: "2'", equipment: "pulley" }
     ],
     "5": [
-      { name: "Jalón al pecho unilateral", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "pulley" },
+      { name: "Jalón unilateral máquina", sets: [[8,10],[10,12]], rir: 1, rest: "3'", equipment: "singleAxis" },
       { name: "Remo en punta", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "3'30", warmup: true, equipment: "singleAxis" },
       { name: "Remo en máquina neutro", sets: [[6,8],[8,10],[8,10]], rir: 1, rest: "3'30", warmup: true, equipment: "barbell" },
       { name: "Remo gironda agarre neutro medio", sets: [[8,10],[10,12]], rir: 1, rest: "3'30", equipment: "pulley" },
